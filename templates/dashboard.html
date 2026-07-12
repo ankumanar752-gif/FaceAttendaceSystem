@@ -1,0 +1,277 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- Dashboard Cards -->
+<div class="row">
+
+    <!-- Total Students -->
+    <div class="col-lg-4 mb-4">
+        <div class="card bg-primary text-white shadow border-0">
+            <div class="card-body">
+                <h5>Total Students</h5>
+                <h1>{{ total_students }}</h1>
+                <i class="fas fa-users fa-3x float-end"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- Today's Attendance -->
+    <div class="col-lg-4 mb-4">
+        <div class="card bg-success text-white shadow border-0">
+            <div class="card-body">
+                <h5>Today's Attendance</h5>
+                <h1>{{ today_attendance }}</h1>
+                <i class="fas fa-user-check fa-3x float-end"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- Today's Date -->
+    <div class="col-lg-4 mb-4">
+        <div class="card bg-warning shadow border-0">
+            <div class="card-body">
+                <h5>Today's Date</h5>
+                <h4>{{ today }}</h4>
+                <i class="fas fa-calendar fa-3x float-end"></i>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- Weekly Attendance + Recent Attendance -->
+<div class="row">
+
+    <!-- Weekly Attendance -->
+    <div class="col-lg-8 mb-4">
+
+        <div class="card shadow border-0">
+
+            <div class="card-header bg-white">
+                <h5>📈 Weekly Attendance</h5>
+            </div>
+
+            <div class="card-body" style="height:350px;">
+                <canvas id="weeklyChart"></canvas>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Recent Attendance -->
+    <div class="col-lg-4 mb-4">
+
+        <div class="card shadow border-0">
+
+            <div class="card-header bg-white">
+                <h5>🕒 Recent Attendance</h5>
+            </div>
+
+            <div class="card-body">
+
+                <table class="table table-hover">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Name</th>
+
+                            <th>Time</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        {% if recent %}
+
+                            {% for r in recent %}
+
+                            <tr>
+
+                                <td>{{ r[0] }}</td>
+
+                                <td>{{ r[1] }}</td>
+
+                            </tr>
+
+                            {% endfor %}
+
+                        {% else %}
+
+                            <tr>
+
+                                <td colspan="2" class="text-center">
+
+                                    No Attendance Yet
+
+                                </td>
+
+                            </tr>
+
+                        {% endif %}
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Department Pie Chart -->
+
+<div class="row">
+
+    <div class="col-lg-12">
+
+        <div class="card shadow border-0">
+
+            <div class="card-header bg-white">
+
+                <h5>🥧 Students by Department</h5>
+
+            </div>
+
+            <div class="card-body" style="height:400px;">
+
+                <canvas id="departmentChart"></canvas>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+
+<script>
+
+// ================= Weekly Attendance =================
+
+const weeklyCtx = document.getElementById("weeklyChart");
+
+new Chart(weeklyCtx, {
+
+    type: "bar",
+
+    data: {
+
+        labels: {{ week_labels | tojson }},
+
+        datasets: [{
+
+            label: "Students Present",
+
+            data: {{ week_counts | tojson }},
+
+            backgroundColor: "#2563EB",
+
+            borderRadius: 8
+
+        }]
+
+    },
+
+    options: {
+
+        responsive: true,
+
+        maintainAspectRatio: false,
+
+        plugins: {
+
+            legend: {
+
+                display: false
+
+            }
+
+        },
+
+        scales: {
+
+            y: {
+
+                beginAtZero: true,
+
+                ticks: {
+
+                    precision: 0
+
+                }
+
+            }
+
+        }
+
+    }
+
+});
+
+// ================= Department Pie Chart =================
+
+const departmentCtx = document.getElementById("departmentChart");
+
+new Chart(departmentCtx, {
+
+    type: "pie",
+
+    data: {
+
+        labels: {{ departments | tojson }},
+
+        datasets: [{
+
+            data: {{ department_counts | tojson }},
+
+            backgroundColor: [
+
+                "#2563EB",
+                "#10B981",
+                "#F59E0B",
+                "#EF4444",
+                "#8B5CF6",
+                "#14B8A6"
+
+            ]
+
+        }]
+
+    },
+
+    options: {
+
+        responsive: true,
+
+        maintainAspectRatio: false,
+
+        plugins: {
+
+            legend: {
+
+                position: "bottom"
+
+            }
+
+        }
+
+    }
+
+});
+
+</script>
+
+{% endblock %}

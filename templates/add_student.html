@@ -1,0 +1,143 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="row justify-content-center">
+
+    <div class="col-lg-7">
+
+        <div class="card shadow-lg border-0">
+
+            <div class="card-header bg-primary text-white text-center">
+
+                <h3>
+                    <i class="fas fa-user-plus"></i>
+                    Add New Student
+                </h3>
+
+            </div>
+
+            <div class="card-body p-4">
+
+                <form action="/save_student" method="POST">
+
+                    <!-- Student ID -->
+
+                    <div class="mb-3">
+
+                        <label class="form-label">
+
+                            <i class="fas fa-id-card text-primary"></i>
+
+                            Student ID
+
+                        </label>
+
+                        <input
+                        type="number"
+                        name="student_id"
+                        class="form-control"
+                        placeholder="Enter Student ID"
+                        required>
+
+                    </div>
+
+                    <!-- Name -->
+
+                    <div class="mb-3">
+
+                        <label class="form-label">
+
+                            <i class="fas fa-user text-primary"></i>
+
+                            Student Name
+
+                        </label>
+
+                        <input
+                        type="text"
+                        name="student_name"
+                        class="form-control"
+                        placeholder="Enter Student Name"
+                        required>
+
+                    </div>
+
+                    <!-- Department -->
+
+                    <div class="mb-3">
+
+                        <label class="form-label">
+
+                            <i class="fas fa-building text-primary"></i>
+
+                            Department
+
+                        </label>
+
+                        <input
+                        type="text"
+                        name="department"
+                        class="form-control"
+                        placeholder="Enter Department"
+                        required>
+
+                    </div>
+
+                    <!-- Semester -->
+
+                    <div class="mb-4">
+
+                        <label class="form-label">
+
+                            <i class="fas fa-graduation-cap text-primary"></i>
+
+                            Semester
+
+                        </label>
+
+                        <select
+                        name="semester"
+                        class="form-select"
+                        required>
+
+                            <option value="">Choose Semester</option>
+
+                            <option>1st</option>
+                            <option>2nd</option>
+                            <option>3rd</option>
+                            <option>4th</option>
+                            <option>5th</option>
+                            <option>6th</option>
+                            <option>7th</option>
+                            <option>8th</option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="d-grid">
+
+                        <button
+                        type="submit"
+                        class="btn btn-primary btn-lg">
+
+                            <i class="fas fa-save"></i>
+
+                            Save Student
+
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
