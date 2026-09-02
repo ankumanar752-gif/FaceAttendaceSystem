@@ -1,207 +1,1128 @@
-body{
+/* =========================================================
+   GOOGLE FONT
+========================================================= */
 
-margin:0;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
-font-family:Arial,sans-serif;
 
-background:#f4f6f9;
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(
+        135deg,
+        #eef2ff,
+        #f8fafc,
+        #f1f5f9
+    );
+    color: #1e293b;
+    min-height: 100vh;
+    animation: pageFade 0.6s ease;
+}
+
+
+/* =========================================================
+   PAGE ANIMATION
+========================================================= */
+
+@keyframes pageFade {
+
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 
 }
 
-.wrapper{
 
-display:flex;
+/* =========================================================
+   LAYOUT
+========================================================= */
+
+.wrapper {
+    display: flex;
+    min-height: 100vh;
+}
+
+
+/* =========================================================
+   SIDEBAR
+========================================================= */
+
+.sidebar {
+
+    width: 260px;
+
+    height: 100vh;
+
+    position: fixed;
+
+    left: 0;
+    top: 0;
+
+    background:
+        linear-gradient(
+            180deg,
+            #1e3a8a,
+            #172554
+        );
+
+    padding: 25px 15px;
+
+    box-shadow:
+        5px 0 25px rgba(0, 0, 0, 0.15);
+
+    z-index: 1000;
+
+    overflow-y: auto;
+}
+
+
+/* Sidebar Logo */
+
+.logo {
+
+    text-align: center;
+
+    color: white;
+
+    margin-bottom: 35px;
 
 }
 
-.sidebar{
 
-width:250px;
+/* Logo heading */
 
-height:100vh;
+.logo h3 {
 
-background:#1E3A8A;
+    font-size: 22px;
 
-position:fixed;
+    font-weight: 700;
 
-padding-top:20px;
-
-}
-
-.logo{
-
-text-align:center;
-
-color:white;
-
-margin-bottom:30px;
+    margin-bottom: 5px;
 
 }
 
-.sidebar a{
 
-display:block;
+/* Logo small text */
 
-color:white;
+.logo small {
 
-padding:15px 20px;
+    color: #cbd5e1;
 
-text-decoration:none;
-
-font-size:16px;
-
-transition:.3s;
+    font-size: 13px;
 
 }
 
-.sidebar a:hover{
 
-background:#2563EB;
+/* Logo circle */
 
-padding-left:30px;
+.logo-circle {
 
-}
+    width: 70px;
+    height: 70px;
 
-.content{
+    margin: 0 auto 15px;
 
-margin-left:250px;
+    background: white;
 
-width:100%;
+    color: #2563eb;
 
-}
+    border-radius: 50%;
 
-.navbar{
+    display: flex;
 
-background:white;
+    justify-content: center;
 
-padding:20px;
+    align-items: center;
 
-box-shadow:0 2px 10px rgba(0,0,0,.1);
+    font-size: 30px;
 
-display:flex;
-
-justify-content:space-between;
-
-align-items:center;
+    box-shadow:
+        0 8px 25px rgba(255,255,255,0.2);
 
 }
 
-.card{
 
-border:none;
+/* Sidebar Links */
 
-border-radius:15px;
+.sidebar a {
 
-box-shadow:0 5px 15px rgba(0,0,0,.1);
+    display: flex;
 
-transition:.3s;
+    align-items: center;
+
+    gap: 12px;
+
+    color: #e5e7eb;
+
+    text-decoration: none;
+
+    padding: 14px 18px;
+
+    margin-bottom: 8px;
+
+    border-radius: 12px;
+
+    transition: all 0.3s ease;
+
+    font-size: 15px;
+
+}
+
+
+/* Sidebar icon */
+
+.sidebar a i {
+
+    width: 22px;
+
+    text-align: center;
+
+    font-size: 16px;
 
 }
 
-.card:hover{
 
-transform:translateY(-5px);
+/* Sidebar Hover */
+
+.sidebar a:hover {
+
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #3b82f6
+        );
+
+    color: white;
+
+    transform: translateX(8px);
+
+    box-shadow:
+        0 10px 25px rgba(37,99,235,0.35);
 
 }
 
-.btn{
 
-border-radius:10px;
+/* Active link */
+
+.sidebar a.active {
+
+    background: white;
+
+    color: #2563eb;
+
+    font-weight: 600;
+
+}
+
+
+.sidebar a.active i {
+
+    color: #2563eb;
 
 }
 
-table{
 
-background:white;
+/* =========================================================
+   MAIN CONTENT
+========================================================= */
 
-border-radius:15px;
+.content {
 
-overflow:hidden;
+    margin-left: 260px;
+
+    width: calc(100% - 260px);
+
+    min-height: 100vh;
+
+    padding: 25px;
 
 }
+
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+.navbar {
+
+    background:
+        rgba(255,255,255,0.88);
+
+    backdrop-filter: blur(18px);
+
+    -webkit-backdrop-filter: blur(18px);
+
+    border-radius: 20px;
+
+    padding: 20px 30px;
+
+    box-shadow:
+        0 12px 35px rgba(0,0,0,0.08);
+
+    border:
+        1px solid rgba(255,255,255,0.5);
+
+}
+
+
+/* Navbar title */
+
+.navbar h3 {
+
+    font-size: 25px;
+
+    font-weight: 700;
+
+}
+
+
+/* =========================================================
+   CARDS
+========================================================= */
+
+.card {
+
+    border: none;
+
+    border-radius: 22px;
+
+    background:
+        rgba(255,255,255,0.82);
+
+    backdrop-filter: blur(18px);
+
+    -webkit-backdrop-filter: blur(18px);
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,0.08);
+
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease;
+
+    overflow: hidden;
+
+}
+
+
+/* Card hover */
+
+.card:hover {
+
+    transform: translateY(-7px);
+
+    box-shadow:
+        0 20px 45px rgba(37,99,235,0.16);
+
+}
+
+
+/* =========================================================
+   DASHBOARD CARDS
+========================================================= */
+
+.dashboard-card {
+
+    position: relative;
+
+    overflow: hidden;
+
+    border-radius: 22px;
+
+    color: white;
+
+}
+
+
+/* Primary */
+
+.bg-primary {
+
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #60a5fa
+        ) !important;
+
+}
+
+
+/* Success */
+
+.bg-success {
+
+    background:
+        linear-gradient(
+            135deg,
+            #10b981,
+            #34d399
+        ) !important;
+
+}
+
+
+/* Warning */
+
+.bg-warning {
+
+    background:
+        linear-gradient(
+            135deg,
+            #f59e0b,
+            #fcd34d
+        ) !important;
+
+}
+
+
+/* Dashboard card heading */
+
+.dashboard-card h5 {
+
+    font-size: 17px;
+
+    font-weight: 500;
+
+}
+
+
+/* Dashboard number */
+
+.dashboard-card h1 {
+
+    font-size: 48px;
+
+    font-weight: 700;
+
+}
+
+
+/* Dashboard icon */
+
+.dashboard-card i {
+
+    opacity: 0.18;
+
+}
+
+
+/* =========================================================
+   GLASS SHINE EFFECT
+========================================================= */
+
+.dashboard-card::after {
+
+    content: "";
+
+    position: absolute;
+
+    top: -60%;
+
+    left: -80%;
+
+    width: 220%;
+
+    height: 220%;
+
+    background:
+        linear-gradient(
+            120deg,
+            transparent,
+            rgba(255,255,255,0.12),
+            transparent
+        );
+
+    transform: rotate(25deg);
+
+    transition: 1s;
+
+}
+
+
+.dashboard-card:hover::after {
+
+    left: 120%;
+
+}
+
+
+/* =========================================================
+   CARD HEADER
+========================================================= */
+
+.card-header {
+
+    background:
+        rgba(255,255,255,0.75);
+
+    border: none;
+
+    font-weight: 600;
+
+    font-size: 17px;
+
+    padding: 18px 20px;
+
+}
+
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.btn {
+
+    border-radius: 12px;
+
+    font-weight: 500;
+
+    transition: all 0.3s ease;
+
+}
+
+
+.btn-primary {
+
+    background: #2563eb;
+
+    border: none;
+
+}
+
+
+.btn-primary:hover {
+
+    background:
+        linear-gradient(
+            135deg,
+            #1d4ed8,
+            #2563eb
+        );
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 10px 25px rgba(37,99,235,0.3);
+
+}
+
+
+/* =========================================================
+   TABLE
+========================================================= */
+
+.table {
+
+    background: white;
+
+    vertical-align: middle;
+
+    border-radius: 15px;
+
+    overflow: hidden;
+
+}
+
+
+.table thead {
+
+    background: #2563eb;
+
+}
+
+
+.table thead th {
+
+    color: white;
+
+    font-weight: 600;
+
+    padding: 14px;
+
+}
+
+
+.table td {
+
+    padding: 14px;
+
+    vertical-align: middle;
+
+}
+
+
+.table-hover tbody tr {
+
+    transition: all 0.25s ease;
+
+}
+
+
+.table-hover tbody tr:hover {
+
+    background: #eef4ff;
+
+    transform: scale(1.005);
+
+}
+
+
+/* =========================================================
+   FORMS
+========================================================= */
 
 .form-control,
-.form-select{
+.form-select {
 
-border-radius:12px;
+    border-radius: 12px;
 
-padding:12px;
+    padding: 12px;
 
-transition:.3s;
+    border: 1px solid #cbd5e1;
+
+    transition: all 0.3s ease;
 
 }
+
 
 .form-control:focus,
-.form-select:focus{
+.form-select:focus {
 
-border-color:#2563EB;
+    border-color: #2563eb;
 
-box-shadow:0 0 10px rgba(37,99,235,.3);
-
-}
-
-.card{
-
-border-radius:18px;
+    box-shadow:
+        0 0 0 0.2rem
+        rgba(37,99,235,0.15);
 
 }
 
-.card-header{
 
-border-radius:18px 18px 0 0 !important;
+/* =========================================================
+   BADGES
+========================================================= */
 
-}
+.badge {
 
-.btn-primary{
+    padding: 8px 13px;
 
-background:#2563EB;
+    font-size: 12px;
 
-border:none;
-
-}
-
-.btn-primary:hover{
-
-background:#1D4ED8;
-
-transform:scale(1.02);
-
-transition:.3s;
+    border-radius: 20px;
 
 }
 
-.table{
 
-vertical-align:middle;
+/* =========================================================
+   DATE / TIME
+========================================================= */
 
-}
+#currentDate {
 
-.card{
+    font-size: 12px;
 
-border-radius:15px;
-
-}
-
-thead{
-
-font-size:17px;
+    color: #64748b;
 
 }
 
-tbody tr:hover{
 
-background:#E0F2FE;
+#currentTime {
 
-transition:.3s;
+    font-size: 17px;
 
-}
+    font-weight: 700;
 
-@media print{
-
-.sidebar,.navbar,.btn{
-
-display:none;
+    color: #2563eb;
 
 }
 
+
+#greeting {
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    color: #1e3a8a;
+
+}
+
+
+/* =========================================================
+   COUNTERS
+========================================================= */
+
+.counter {
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+}
+
+
+/* =========================================================
+   CHART
+========================================================= */
+
+canvas {
+
+    padding: 8px;
+
+    animation:
+        chartFade 0.9s ease;
+
+}
+
+
+@keyframes chartFade {
+
+    from {
+
+        opacity: 0;
+
+        transform: translateY(20px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform: translateY(0);
+
+    }
+
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer {
+
+    font-size: 14px;
+
+    color: #64748b;
+
+}
+
+
+footer strong {
+
+    color: #2563eb;
+
+}
+
+
+/* =========================================================
+   SCROLLBAR
+========================================================= */
+
+::-webkit-scrollbar {
+
+    width: 8px;
+
+}
+
+
+::-webkit-scrollbar-track {
+
+    background: #f1f5f9;
+
+}
+
+
+::-webkit-scrollbar-thumb {
+
+    background: #2563eb;
+
+    border-radius: 20px;
+
+}
+
+
+::-webkit-scrollbar-thumb:hover {
+
+    background: #1d4ed8;
+
+}
+
+
+/* =========================================================
+   DARK MODE
+========================================================= */
+
+body.dark-mode {
+
+    background: #0f172a;
+
+    color: #e2e8f0;
+
+}
+
+
+/* Main */
+
+body.dark-mode .content {
+
+    background: #0f172a;
+
+}
+
+
+/* Navbar */
+
+body.dark-mode .navbar {
+
+    background:
+        rgba(30,41,59,0.95) !important;
+
+    color: white;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,0.4);
+
+}
+
+
+body.dark-mode .navbar h3 {
+
+    color: #60a5fa !important;
+
+}
+
+
+body.dark-mode .navbar small {
+
+    color: #cbd5e1 !important;
+
+}
+
+
+/* Cards */
+
+body.dark-mode .card {
+
+    background:
+        rgba(30,41,59,0.95);
+
+    color: #e2e8f0;
+
+    box-shadow:
+        0 15px 35px rgba(0,0,0,0.4);
+
+}
+
+
+body.dark-mode .card-header {
+
+    background:
+        #1e293b;
+
+    color: white;
+
+}
+
+
+/* Table */
+
+body.dark-mode .table {
+
+    background: #1e293b;
+
+    color: white;
+
+}
+
+
+body.dark-mode .table thead {
+
+    background: #334155;
+
+}
+
+
+body.dark-mode .table thead th {
+
+    color: white;
+
+}
+
+
+body.dark-mode .table-hover tbody tr:hover {
+
+    background: #334155;
+
+}
+
+
+/* Forms */
+
+body.dark-mode .form-control,
+body.dark-mode .form-select {
+
+    background: #334155;
+
+    border-color: #475569;
+
+    color: white;
+
+}
+
+
+body.dark-mode .form-control::placeholder {
+
+    color: #cbd5e1;
+
+}
+
+
+body.dark-mode .form-control:focus,
+body.dark-mode .form-select:focus {
+
+    background: #334155;
+
+    color: white;
+
+    border-color: #60a5fa;
+
+}
+
+
+/* Footer */
+
+body.dark-mode footer {
+
+    color: #cbd5e1;
+
+}
+
+
+/* Greeting */
+
+body.dark-mode #greeting {
+
+    color: #93c5fd;
+
+}
+
+
+body.dark-mode #currentDate {
+
+    color: #cbd5e1;
+
+}
+
+
+/* Sidebar */
+
+body.dark-mode .sidebar {
+
+    background:
+        linear-gradient(
+            180deg,
+            #020617,
+            #0f172a
+        );
+
+}
+
+
+/* Light button */
+
+body.dark-mode .btn-light {
+
+    background: #334155;
+
+    color: white;
+
+    border: none;
+
+}
+
+
+body.dark-mode .btn-light:hover {
+
+    background: #475569;
+
+}
+
+
+/* Alerts */
+
+body.dark-mode .alert {
+
+    color: white;
+
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .sidebar {
+
+        width: 75px;
+
+    }
+
+
+    .sidebar .logo h3,
+    .sidebar .logo small {
+
+        display: none;
+
+    }
+
+
+    .logo-circle {
+
+        width: 50px;
+
+        height: 50px;
+
+        font-size: 22px;
+
+    }
+
+
+    .sidebar a {
+
+        justify-content: center;
+
+        padding: 14px 8px;
+
+    }
+
+
+    .sidebar a span {
+
+        display: none;
+
+    }
+
+
+    .content {
+
+        margin-left: 75px;
+
+        width: calc(100% - 75px);
+
+        padding: 15px;
+
+    }
+
+
+    .navbar {
+
+        padding: 15px;
+
+    }
+
+
+    .navbar h3 {
+
+        font-size: 18px;
+
+    }
+
+
+    .dashboard-card h1 {
+
+        font-size: 38px;
+
+    }
+
+}
+
+
+/* =========================================================
+   PRINT
+========================================================= */
+
+@media print {
+
+    .sidebar,
+    .navbar,
+    .btn {
+
+        display: none !important;
+
+    }
+
+
+    .content {
+
+        margin: 0;
+
+        width: 100%;
+
+        padding: 0;
+
+    }
+
+}
+
+/* =========================
+   DARK MODE EXTRA FIXES
+========================= */
+
+body.dark-mode .table,
+body.dark-mode .table tbody,
+body.dark-mode .table td,
+body.dark-mode .table th {
+    background-color: #1E293B !important;
+    color: #E2E8F0 !important;
+}
+
+body.dark-mode .text-dark {
+    color: #F8FAFC !important;
+}
+
+body.dark-mode .text-muted {
+    color: #CBD5E1 !important;
+}
+
+body.dark-mode .bg-white {
+    background-color: #1E293B !important;
+}
+
+body.dark-mode .btn-light {
+    background: #334155 !important;
+    color: #F8FAFC !important;
+}
+
+body.dark-mode .navbar .btn-light {
+    border: 1px solid #475569;
+}
+
+body.dark-mode footer {
+    border-color: #334155 !important;
+}
+
+body.dark-mode .alert {
+    background-color: #334155;
+    border-color: #475569;
 }
